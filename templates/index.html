@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>AQI 資料視覺化</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
+    <noscript><link rel="stylesheet" href="{{url_for('static', filename='css/noscript.css')}}" /></noscript>
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1>AQI 空氣品質指標資料視覺化</h1>
+            <p>Python 程式設計期末專案<br />
+                資工二A 112502505 王昭尹
+            </p>
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="#intro" class="active">首頁介紹</a></li>
+                <li><a href="#dashboards">互動圖表</a></li>
+				<li><a href="#future">未來方向</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+            <!-- Introduction -->
+            <section id="intro" class="main">
+                <div class="spotlight">
+                    <div class="content">
+                        <header class="major">
+                            <h2>專案說明</h2>
+                        </header>
+                        <p>
+                            本網站以台灣地區的空氣品質監測（AQI）公開資料為基礎，使用 Python、Dash 與 Plotly 製作互動式數據視覺化。<br>
+                            包含年度、月度、即時、地圖、熱圖等多元分析面向，讓使用者可以一目瞭然地觀察空氣品質的時空分佈、主要污染物成分，以及危害程度等。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboards Section -->
+            <section id="dashboards" class="main">
+				<div class="spotlight">
+                    <div class="content">
+						<header class="major">
+							<h2>互動圖表集</h2>
+						</header>
+						<p>所有資料來自環保署官方 API，每小時自動抓取並更新。點擊各分頁或下方滑動區塊，即可互動切換不同分析圖。</p>
+					</div>
+                </div>
+
+                <div class="chart-block">
+                    <h3>AQI 年度變化分析</h3>
+                    <p>觀察各地區年度空氣品質指數（AQI）變化趨勢。適合比較跨年變化，找出改善與惡化的時段。</p>
+                    <iframe src="/dash_aqiyear/" width="100%" height="600" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>主污染物構成</h3>
+                    <p>分析各地 AQI 主要由哪些污染物組成（如 PM2.5、O₃、NO₂ 等），了解當地主要空污來源。</p>
+                    <iframe src="/dash_pollutant/" width="100%" height="600" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>測站 AQI 分佈</h3>
+                    <p>不同測站的 AQI 分佈情形，可找出高危地區或相對空氣較佳區域。</p>
+                    <iframe src="/dash_site/" width="100%" height="600" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>每月 AQI 分佈</h3>
+                    <p>以月為單位分析 AQI 分佈與變動，觀察季節性影響或特殊污染事件。</p>
+                    <iframe src="/dash_month/" width="100%" height="600" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>每年 AQI 分佈</h3>
+                    <p>快速比較不同年份空氣品質分布狀況，追蹤長期變化趨勢。</p>
+                    <iframe src="/dash_year/" width="100%" height="600" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>主污染物 AQI 分佈</h3>
+                    <p>細看不同主污染物（例如 PM2.5、O₃ 等）對 AQI 的貢獻與變化。</p>
+                    <iframe src="/dash_mainpollutant/" width="100%" height="600" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>AQI 危險等級比例</h3>
+                    <p>各等級（良好、普通、不健康等）在總資料中占比，快速了解空氣品質狀態分布。</p>
+                    <iframe src="/dash_aqi_level_pie/" width="100%" height="600" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>主污染物比例</h3>
+                    <p>各主要污染物出現頻率的圓餅圖，清楚顯示各成分在污染事件中的角色。</p>
+                    <iframe src="/dash_pollutant_pie/" width="100%" height="600" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>AQI 日曆熱圖</h3>
+                    <p>全年 AQI 變化以日曆熱力圖呈現，方便快速瀏覽高低汙染日分布。</p>
+                    <iframe src="/dash_calendar/" width="100%" height="1000" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>每月 AQI 變化（曲線圖）</h3>
+                    <p>單一測站的每日 AQI 與副指標曲線，可分析短期變動與異常。</p>
+                    <iframe src="/dash_line_daily/" width="100%" height="600" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>近 30 日 AQI 變化</h3>
+                    <p>各測站最近 30 天的 AQI 及副指標趨勢，反映短期環境變化。</p>
+                    <iframe src="/dash_aqi_online_30/" width="100%" height="600" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>近 24 小時 AQI 變化</h3>
+                    <p>顯示各測站過去 24 小時的 AQI 變化，可發現突發污染事件或日夜差異。</p>
+                    <iframe src="/dash_aqi_online_24/" width="100%" height="600" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>即時 AQI 地圖</h3>
+                    <p>地圖顯示最新空氣品質狀態，各測站點的 AQI 即時顏色顯示，直觀感受全台空氣分布。</p>
+                    <iframe src="/dash_aqi_map/" width="100%" height="800" style="border:none;"></iframe>
+                </div>
+
+                <div class="chart-block">
+                    <h3>近 24 小時即時 AQI 動畫地圖</h3>
+                    <p>可以播放、觀察台灣全區 24 小時 AQI 的動態變化，分析污染傳遞與流動情況。</p>
+                    <iframe src="/dash_aqi_24_map/" width="100%" height="800" style="border:none;"></iframe>
+                </div>
+            </section>
+
+			<!-- Future Work Section -->
+            <section id="future" class="main special">
+                <header class="major">
+                    <h2>未來方向：AI 預測與應用想像</h2>
+                </header>
+                <p>
+                    這次專題讓我學會了資料爬取、處理和視覺化，也發現空氣品質資料其實很適合做預測。如果還有機會繼續延伸，我想試著用 Python 的機器學習套件（像是 scikit-learn 或 Keras）來訓練模型，看看能不能根據過去的數據預測未來幾天的 AQI 變化。
+                    <br><br>
+                    例如，輸入最近一個月各地的 AQI 以及天氣資訊，預測明天或後天的空氣品質，讓大家提前知道什麼時候要注意防護，感覺非常實用而且有成就感。
+                </p>
+                <p>
+                    學習怎麼把真實世界的資料轉成 AI 能理解的格式<br>
+                    挑戰寫一個自己的簡單預測模型，體驗機器學習的流程<br>
+                    未來想嘗試把預測結果加進網站，做成互動的「空氣品質預測小工具」<br>
+                </p>
+                <p>
+                    雖然目前還只會資料分析和畫圖，但我很期待之後能把 AI 預測加進來，讓專案功能更豐富，自己也能學到更多！
+                </p>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+        </footer>
+    </div>
+    <!-- Scripts -->
+    <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.scrollex.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.scrolly.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/browser.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/breakpoints.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/util.js')}}"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>
