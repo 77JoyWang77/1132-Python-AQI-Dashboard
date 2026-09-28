@@ -40,8 +40,8 @@
 
 ```bash
 pip install -r requirements.txt
-export MOENV_API_KEY=你的key      # Windows PowerShell: $env:MOENV_API_KEY="你的key"
-python app.py                     # http://localhost:5000
+cp .env.example .env    # 在 .env 填入 MOENV_API_KEY=你的key
+python app.py           # http://localhost:5000
 ```
 
 ## 部署

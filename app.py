@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()  # 讀取專案根目錄的 .env（MOENV_API_KEY）
+
 from flask import Flask, render_template
 
 server = Flask(__name__)

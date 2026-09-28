@@ -2,6 +2,9 @@ import requests
 import pandas as pd
 import time
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 api_url = "https://data.moenv.gov.tw/api/v2"
 dataset = "AQX_P_434"

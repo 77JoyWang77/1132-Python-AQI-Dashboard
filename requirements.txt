@@ -11,3 +11,4 @@ seaborn==0.13.2
 tqdm==4.66.2
 xgboost==3.0.0
 gunicorn
+python-dotenv
