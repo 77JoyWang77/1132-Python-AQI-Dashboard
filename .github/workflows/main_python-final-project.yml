@@ -5,9 +5,7 @@
 name: Build and deploy Python app to Azure Web App - python-final-project
 
 on:
-  push:
-    branches:
-      - main
+  # Azure 訂閱已停用，改為手動觸發，避免每次 push 部署失敗
   workflow_dispatch:
 
 jobs:
