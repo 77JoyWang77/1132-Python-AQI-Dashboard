@@ -7,7 +7,7 @@ api_url = "https://data.moenv.gov.tw/api/v2"
 dataset = "AQX_P_434"
 format_type = "json"
 limit = 50
-api_key = "316432ca-af2d-4778-8dd5-ff38d2660893"
+api_key = os.environ.get("MOENV_API_KEY", "")  # 環境部 API key，從環境變數讀取
 output_path = "data/aqi30.csv"
 
 def fetch_with_retry(url, retries=3, sleep_sec=5):

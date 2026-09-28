@@ -3,12 +3,13 @@ from dash import dcc, html, Input, Output
 import plotly.graph_objects as go
 import pandas as pd
 import requests
+import os
 
 # API 基本參數
 api_url = "https://data.moenv.gov.tw/api/v2"
 dataset = "AQX_P_432"
 format_type = "json"
-api_key = "316432ca-af2d-4778-8dd5-ff38d2660893"
+api_key = os.environ.get("MOENV_API_KEY", "")  # 環境部 API key，從環境變數讀取
 fields = {
     "aqi": {"label": "AQI", "column": "aqi", "unit": "", "scale": [0, 50, 100, 150, 200, 300, 400, 500]},
     "pm2.5": {"label": "PM2.5", "column": "pm2.5_avg", "unit": "μg/m³", "scale": [0, 12.4, 30.4, 50.4, 125.4, 225.4, 325.4, 500.4]},
